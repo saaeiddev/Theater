@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#12070d" />
+  <meta name="description" content="تئاتر سه‌بعدی تعاملی برای آشنایی با ژانرهای نمایشی و نمایشنامه‌های شاخص" />
+  <title>THEATER | موزه تعاملی ژانرهای نمایش</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app" aria-label="صحنه سه‌بعدی تئاتر">
+    <canvas id="scene"></canvas>
+
+    <header class="topbar">
+      <div class="brand" aria-label="Theater">
+        <span class="brand-mark">T</span>
+        <span class="brand-copy"><strong>THEATER</strong><small>Interactive Stage</small></span>
+      </div>
+      <div class="top-actions">
+        <button class="glass-button" id="homeBtn" type="button" title="نمای اصلی">⌂</button>
+        <button class="glass-button" id="soundBtn" type="button" aria-pressed="true" title="صدا">♪</button>
+        <button class="glass-button" id="aboutBtn" type="button">درباره پروژه</button>
+      </div>
+    </header>
+
+    <section class="hero-copy" id="heroCopy">
+      <p class="eyebrow">یک صحنه، هزار داستان</p>
+      <h1>پرده را باز کن.</h1>
+      <p>روی پرده کلیک کن و وارد دنیای ژانرهای نمایش شو.</p>
+      <button id="openCurtainBtn" class="primary-cta" type="button"><span>باز کردن پرده</span><b>↙</b></button>
+    </section>
+
+    <div id="curtainHint" class="curtain-hint"><span></span> برای شروع روی پرده کلیک کن</div>
+
+    <aside id="genrePanel" class="genre-panel" aria-live="polite" aria-hidden="true">
+      <button id="closePanel" class="panel-close" type="button" aria-label="بستن">×</button>
+      <div class="panel-head">
+        <div id="panelIcon" class="panel-icon">🎭</div>
+        <div>
+          <span id="panelKicker" class="panel-kicker">ژانر نمایشی</span>
+          <h2 id="panelTitle">درام</h2>
+          <p id="panelEnglish">Drama</p>
+        </div>
+      </div>
+      <p id="panelDescription" class="panel-description"></p>
+      <div class="panel-meta">
+        <div><span>حال‌وهوا</span><strong id="panelMood"></strong></div>
+        <div><span>تمرکز</span><strong id="panelFocus"></strong></div>
+      </div>
+      <div class="examples-wrap">
+        <h3>نمونه نمایشنامه‌ها</h3>
+        <div id="examples" class="examples"></div>
+      </div>
+      <div class="panel-tip">برای دیدن ژانر بعدی، روی یکی دیگر از آیکون‌های صحنه کلیک کن.</div>
+    </aside>
+
+    <section id="aboutModal" class="modal" aria-hidden="true">
+      <div class="modal-card">
+        <button id="closeAbout" class="panel-close" type="button" aria-label="بستن">×</button>
+        <span class="modal-symbol">🎟️</span>
+        <p class="eyebrow">THEATER / 3D EXPERIENCE</p>
+        <h2>دایره‌المعارف تعاملی ژانرهای نمایش</h2>
+        <p>این تجربه، یک صحنه سه‌بعدی زنده است. پرده را باز کن، در صحنه حرکت کن و با انتخاب هر ژانر، تعریف کوتاه و نمونه نمایشنامه‌های شناخته‌شده آن را ببین.</p>
+        <p class="credit">Designed as an interactive web theater • 2026</p>
+      </div>
+    </section>
+
+    <div class="stage-nav" id="stageNav" aria-hidden="true">
+      <button id="prevGenre" type="button" aria-label="ژانر قبلی">‹</button>
+      <div><strong id="genreCounter">01 / 15</strong><span>ژانرها</span></div>
+      <button id="nextGenre" type="button" aria-label="ژانر بعدی">›</button>
+    </div>
+
+    <div class="loader" id="loader">
+      <div class="loader-mark">T</div>
+      <div class="loader-line"><i></i></div>
+      <span>آماده‌سازی صحنه...</span>
+    </div>
+
+    <footer class="footer-note">Drag to look • Scroll to zoom • Click a genre</footer>
+  </div>
+  <noscript>برای اجرای این تجربه سه‌بعدی، JavaScript باید فعال باشد.</noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
